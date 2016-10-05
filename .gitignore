@@ -33,6 +33,7 @@ local.properties
 target
 *.class
 .worksheet/
+.cache-main
 
 # Vim
 tags
