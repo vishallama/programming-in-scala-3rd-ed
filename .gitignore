@@ -32,6 +32,7 @@ local.properties
 # Scala
 target
 *.class
+.worksheet/
 
 # Vim
 tags
