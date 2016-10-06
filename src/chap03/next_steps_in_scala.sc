@@ -1,5 +1,7 @@
 package chap03
 
+import scala.collection.mutable
+
 object next_steps_in_scala {
   println("Chapter 3: Next Steps in Scala")       //> Chapter 3: Next Steps in Scala
   println()                                       //> 
@@ -54,4 +56,36 @@ object next_steps_in_scala {
   thrill.sortWith((s, t) => s.charAt(0).toLower < t.charAt(0).toLower)
                                                   //> res16: List[String] = List(fill, until, Will)
   thrill.tail                                     //> res17: List[String] = List(fill, until)
+  
+  // Tuples
+  val pair = (99, "Luftballons")                  //> pair  : (Int, String) = (99,Luftballons)
+  
+  // Immutable Sets
+  var jetSet = Set("Boeing", "Airbus")            //> jetSet  : scala.collection.immutable.Set[String] = Set(Boeing, Airbus)
+  jetSet += "Lear"
+  println(jetSet.contains("Cessna"))              //> false
+  
+  // Mutable Sets
+  val movieSet = mutable.Set("Hitch", "Poltergeist")
+                                                  //> movieSet  : scala.collection.mutable.Set[String] = Set(Poltergeist, Hitch)
+  movieSet += "Shrek"                             //> res18: chap03.next_steps_in_scala.movieSet.type = Set(Poltergeist, Shrek, H
+                                                  //| itch)
+  println(movieSet)                               //> Set(Poltergeist, Shrek, Hitch)
+  
+  // Mutable Maps
+  val treasureMap = mutable.Map[Int, String]()    //> treasureMap  : scala.collection.mutable.Map[Int,String] = Map()
+  treasureMap += (1 -> "Go to island.")           //> res19: chap03.next_steps_in_scala.treasureMap.type = Map(1 -> Go to island.
+                                                  //| )
+  treasureMap += (2 -> "Find big X on ground.")   //> res20: chap03.next_steps_in_scala.treasureMap.type = Map(2 -> Find big X on
+                                                  //|  ground., 1 -> Go to island.)
+  treasureMap += (3 -> "Dig.")                    //> res21: chap03.next_steps_in_scala.treasureMap.type = Map(2 -> Find big X on
+                                                  //|  ground., 1 -> Go to island., 3 -> Dig.)
+  println(treasureMap(2))                         //> Find big X on ground.
+  
+  // Immutable Maps
+  val romanNumeral = Map(
+  	1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V"
+  )                                               //> romanNumeral  : scala.collection.immutable.Map[Int,String] = Map(5 -> V, 1 
+                                                  //| -> I, 2 -> II, 3 -> III, 4 -> IV)
+  println(romanNumeral(4))                        //> IV
 }
