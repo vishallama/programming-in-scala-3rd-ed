@@ -14,3 +14,4 @@ object match_expressions {
 	    case _ => "huh?"
     }
 }
+
