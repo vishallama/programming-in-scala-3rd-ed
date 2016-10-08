@@ -20,4 +20,23 @@ object for_expressions {
 		} println(file + ": " + trimmed)
 
 	grep(".*.scala.*")
+
+	// Producing a collection
+	def scalaFiles =
+		for {
+			file <- filesHere
+			if file.getName.endsWith(".scala")
+		} yield file
+
+	println(scalaFiles)
+
+	// Transforming a collection
+	val forLineLengths =
+		for {
+			file <- filesHere
+			if file.getName.endsWith(".scala")
+			line <- fileLines(file)
+			trimmed = line.trim
+			if trimmed.matches(".*for.*")
+		} yield trimmed.length
 }
