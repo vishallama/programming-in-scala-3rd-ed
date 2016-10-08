@@ -39,11 +39,11 @@ object try_expressions {
       new URL("https://www.scala-lang.org")
     }
 
-  println("www.scala-ide.org")
-  println(urlFor("www-malformed-url"))
+  println(urlFor("http://www.scala-ide.org")) // "http://www.scala-ide.org"
+  println(urlFor("www-malformed-url"))        // "https://www.scala-lang.org"
 
-  def f(): Int = try return 1 finally return 2   // returns 2
-  def g(): Int = try 1 finally 2                 // returns 1
+  def f(): Int = try return 1 finally return 2   // 2
+  def g(): Int = try 1 finally 2                 // 1
 
   println(f())
   println(g())
