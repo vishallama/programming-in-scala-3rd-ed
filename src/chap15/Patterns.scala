@@ -40,4 +40,17 @@ object Patterns {
     case BinOp("+", e, Number(0)) => println("a deep match")
     case _ =>
   }
+
+  // Sequence patterns
+  val list = List(1, 2, 3)
+  list match  {
+    case List(0, _, _) => println("found it")
+    case _ =>
+  }
+
+  // Sequence pattern with arbitrary length
+  list match {
+    case List(0, _*) => println("found it")
+    case _ =>
+  }
 }
