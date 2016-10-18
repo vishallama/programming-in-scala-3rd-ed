@@ -5,7 +5,7 @@ import math.{E, Pi}
 object Patterns {
 
   val v = Var("x")
-  val expr = BinOp("+", Number(1), v)
+  val expr: Expr = BinOp("+", Number(1), v)
   val expr1 = 1
 
   // Wild-card patterns
@@ -86,4 +86,10 @@ object Patterns {
     case a: Array[String] => "yes"
     case _ => "no"
   }
+
+  // Variable binding
+   expr match {
+     case UnOp("abs", e @ UnOp("abs", _)) => e
+     case _ => expr
+   }
 }
