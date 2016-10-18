@@ -27,4 +27,16 @@ object PatternsEverywhere extends App {
 
   println(withDefault(Some(10)))
   println(withDefault(None))
+
+  // Patterns in for expressions
+
+  // Patterns match generated values
+  val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo")
+  for ((country, capital) <- capitals)
+    println("The capital of " + country + " is " + capital)
+
+  // Patterns might not match generated values. Generated values that do not
+  // match the pattern are discarded.
+  val results = List(Some("apple"), None, Some("orange"))
+  for (Some(fruit) <- results) println(fruit)
 }
