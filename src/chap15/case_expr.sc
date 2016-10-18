@@ -20,4 +20,8 @@ object case_expr {
   // copies.
   val minusOp = op.copy(operator = "-")
   println(minusOp)
+  
+  // Patterns everywhere
+  val exp = BinOp("*", Number(5), Number(1))
+  val BinOp(operation, left, right) = exp
 }
