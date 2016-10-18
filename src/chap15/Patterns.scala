@@ -59,4 +59,11 @@ object Patterns {
     case (a, b, c) => println("matched " + a + b + c)
     case _ =>
   }
+
+  // Typed patterns
+  def generalSize(x: Any) = x match {
+    case s: String => s.length
+    case m: Map[_, _] => m.size
+    case _ => -1
+  }
 }
