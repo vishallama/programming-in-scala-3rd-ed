@@ -53,4 +53,10 @@ object Patterns {
     case List(0, _*) => println("found it")
     case _ =>
   }
+
+  // Tuple patterns
+  def tupleDemo(expr: Any) = expr match {
+    case (a, b, c) => println("matched " + a + b + c)
+    case _ =>
+  }
 }
