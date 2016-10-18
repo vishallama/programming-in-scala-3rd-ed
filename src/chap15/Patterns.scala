@@ -101,4 +101,20 @@ object Patterns {
        BinOp("*", x, Number(2))
      case _ => e
    }
+
+   // Pattern overlaps: All catch-all cases come after the more specific
+   // simplication rules.
+   def simplifyAll(expr: Expr): Expr = expr match {
+     case UnOp("-", UnOp("-", e)) =>
+       simplifyAll(e)    // '-' is its own inverse
+     case BinOp("+", e, Number(0)) =>
+       simplifyAll(e)    // '0' is a neutral element for '+'
+     case BinOp("*", e, Number(1)) =>
+       simplifyAll(e)    // '1' is a neutral element for '*'
+     case UnOp(op, e) =>
+       UnOp(op, simplifyAll(e))
+     case BinOp(op, left, right) =>
+       BinOp(op, simplifyAll(left), simplifyAll(right))
+     case _ => expr
+   }
 }
