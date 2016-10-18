@@ -13,4 +13,18 @@ object PatternsEverywhere extends App {
   println(op)
   println(left)
   println(right)
+
+  // Case sequences as partial functions: A sequence of cases in curly braces
+  // can be used anywhere a function literal can be used. A case sequence in
+  // essence is a more general function literal.
+  // A case sequence has multiple entry points, each with their own list of
+  // parameters. Each case is an entry point to the function, and the
+  // parameters are specified with the pattern.
+  def withDefault: Option[Int] => Int = {
+    case Some(x) => x
+    case None => 0
+  }
+
+  println(withDefault(Some(10)))
+  println(withDefault(None))
 }
