@@ -66,4 +66,24 @@ object Patterns {
     case m: Map[_, _] => m.size
     case _ => -1
   }
+
+  // Type Erasure: No information about type arguments is maintained at
+  // runtime. Thus, there is no way to determine at runtime whether a given
+  // Map object has been created with two Int arguments, rather than with
+  // arguments of different types.
+  /*
+  def isIntIntMap(x: Any) = x match {
+    case m: Map[Int, Int] => true
+    case _ => false
+  }
+  */
+  // The above function always returns true for any map.
+
+  // The only exception to the erasure rule is arrays, because they are
+  // handled specially in Java as well as in Scala. The element type of an
+  // array is stored with the array value, so you can pattern match on it.
+  def isStringArray(x: Any) = x match {
+    case a: Array[String] => "yes"
+    case _ => "no"
+  }
 }
