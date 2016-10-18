@@ -34,4 +34,10 @@ object Patterns {
     case `pi` => "strange math? Pi = " + pi
     case _ => "OK"
   }
+
+  // Constructor patterns
+  expr match {
+    case BinOp("+", e, Number(0)) => println("a deep match")
+    case _ =>
+  }
 }
