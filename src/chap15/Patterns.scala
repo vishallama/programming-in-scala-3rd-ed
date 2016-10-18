@@ -92,4 +92,13 @@ object Patterns {
      case UnOp("abs", e @ UnOp("abs", _)) => e
      case _ => expr
    }
+
+   // Pattern Guards: Scala restricts patterns to be linear, i.e. a pattern
+   // variable may only appear once in a pattern. However, you can reformulate
+   // a match with a pattern guard.
+   def simplifyAdd(e: Expr) = e match {
+     case BinOp("+", x, y) if x == y =>
+       BinOp("*", x, Number(2))
+     case _ => e
+   }
 }
