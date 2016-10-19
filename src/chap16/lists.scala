@@ -46,4 +46,17 @@ object lists extends App {
   }
 
   println(isort(List(2, 5, 3, 1, 4)))
+
+
+  // First-order methods on class List: A method is first-order if it does not
+  // take any functions as arguments.
+
+  // Concatenating two lists
+  def append[T](xs: List[T], ys: List[T]): List[T] =
+    xs match {
+    case List() => ys
+    case x :: xs1 => x :: append(xs1, ys)
+  }
+
+  println(append(List(1, 2), List(3, 4)))
 }
