@@ -19,4 +19,16 @@ object lists extends App {
   // object can also be seen as an object of every other list type of the form
   // List[T]. That's why it is okay to write code like this:
   val xs: List[String] = List()
+
+  // Basic Operations on Lists: All operations on lists can be expressed in
+  // terms of the following three: head, tail, and isEmpty.
+  def insertionSort(xs: List[Int]): List[Int] =
+    if (xs.isEmpty) Nil
+    else insert(xs.head, insertionSort(xs.tail))
+
+  def insert(x: Int, xs: List[Int]): List[Int] =
+    if (xs.isEmpty || x <= xs.head) x :: xs
+    else xs.head :: insert(x, xs.tail)
+
+  println(insertionSort(List(2, 5, 3, 1, 4)))
 }
