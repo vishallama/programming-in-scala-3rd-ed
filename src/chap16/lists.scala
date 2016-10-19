@@ -31,4 +31,19 @@ object lists extends App {
     else xs.head :: insert(x, xs.tail)
 
   println(insertionSort(List(2, 5, 3, 1, 4)))
+
+  // Insertion sort using pattern matching
+  def isort(xs: List[Int]): List[Int] = xs match {
+    case List() => List()
+    case x :: xs1 => inserti(x, isort(xs1))
+  }
+
+  def inserti(x: Int, xs: List[Int]): List[Int] = xs match {
+    case List() => List(x)
+    case y :: ys =>
+      if (x <= y) x :: xs
+      else y :: inserti(x, ys)
+  }
+
+  println(isort(List(2, 5, 3, 1, 4)))
 }
