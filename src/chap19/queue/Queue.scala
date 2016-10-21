@@ -1,9 +1,9 @@
 package chap19.queue
 
-trait Queue[T] {
+trait Queue[+T] {
   def head: T
   def tail: Queue[T]
-  def enqueue(x: T): Queue[T]
+  def enqueue[U >: T](x: U): Queue[U]
 }
 
 object Queue {
@@ -29,7 +29,7 @@ object Queue {
     new QueueImpl(q.leading.tail, q.trailing)
   }
 
-  def enqueue(x: T) =
+  def enqueue[U >: T](x: U) =
     new QueueImpl(leading, x :: trailing)
   }
 }
