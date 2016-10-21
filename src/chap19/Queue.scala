@@ -1,6 +1,6 @@
 package chap19
 
-class Queue[T] private (
+class Queue[+T] private (
     private val leading: List[T],
     private val trailing: List[T]
     ) {
@@ -20,7 +20,7 @@ class Queue[T] private (
       Queue(q.leading.tail, q.trailing)
   }
 
-  def enqueue(x: T) =
+  def enqueue[U >: T](x: U) =
     Queue(leading, x :: trailing)
 }
 
