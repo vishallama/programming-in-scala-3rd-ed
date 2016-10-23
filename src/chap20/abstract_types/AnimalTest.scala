@@ -9,4 +9,5 @@ object AnimalTest extends App {
 
   // This compiles just fine
   bessy eat (new Grass)
+  bessy eat (new bessy.SuitableFood)
 }
