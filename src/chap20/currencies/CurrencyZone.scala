@@ -19,4 +19,6 @@ abstract class CurrencyZone {
     def * (x: Double): Currency =
       make((this.amount * x).toLong)
   }
+
+  val CurrencyUnit: Currency
 }

@@ -7,5 +7,11 @@ object US extends CurrencyZone {
 
   type Currency = Dollar
 
-  def make(x: Long) = new Dollar { val amount = x}
+  def make(cents: Long) = new Dollar {
+    val amount = cents
+  }
+
+  val Cent = make(1)
+  val Dollar = make(100)
+  val CurrencyUnit = Dollar
 }
